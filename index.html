@@ -6,7 +6,7 @@
 <title>Anushka Devaprakash</title>
 <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 <link rel="apple-touch-icon" href="/favicon.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQTY2F9P1H"></script>
 <script>
@@ -26,8 +26,9 @@ a, button { -webkit-tap-highlight-color: rgba(255,255,255,0.08); }
   --faint: rgba(255,255,255,0.18);
   --border: rgba(255,255,255,0.12);
   --border-dim: rgba(255,255,255,0.07);
-  --mono: 'Share Tech Mono', monospace;
-  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+  --display: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Mono', monospace;
 }
 
 html { scroll-behavior: smooth; }
@@ -42,10 +43,7 @@ body {
 
 .grid-bg {
   position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 80px 80px;
+  background-image: none;
 }
 
 /* ── NAV ── */
@@ -60,6 +58,7 @@ nav {
 .nav-name {
   font-size: 0.70rem; font-weight: 700;
   letter-spacing: 0.38em; text-transform: uppercase; color: #ffffff;
+  font-family: 'IBM Plex Mono', monospace;
 }
 .nav-links { display: flex; list-style: none; height: 52px; }
 .nav-links li { border-left: 1px solid var(--border); }
@@ -129,7 +128,7 @@ nav {
 .mark-br { bottom: 16px; right: 16px; border-width: 0 1px 1px 0; }
 
 .hero-eyebrow {
-  font-family: var(--mono); font-size: clamp(0.72rem, 1.4vw, 0.88rem); letter-spacing: 0.18em;
+  font-family: 'IBM Plex Mono', monospace; font-size: clamp(0.64rem, 1.1vw, 0.74rem); letter-spacing: 0.18em;
   color: rgba(255,255,255,0.72); margin-bottom: 3.5rem;
   max-width: 660px; line-height: 2.0;
   opacity: 0; animation: rise 0.7s ease forwards 0.2s;
@@ -144,7 +143,7 @@ nav {
 }
 
 .hero-desc {
-  font-family: var(--sans); font-size: clamp(0.88rem, 1.35vw, 1rem); font-weight: 400; line-height: 2.0;
+  font-family: var(--sans); font-size: clamp(0.74rem, 1.1vw, 0.84rem); font-weight: 400; line-height: 2.0;
   color: rgba(255,255,255,0.42); max-width: 560px;
   border-left: 1px solid rgba(255,255,255,0.15); padding-left: 1.4rem;
   opacity: 0; animation: fade-in 1.6s ease-in-out forwards 3.7s;
@@ -206,7 +205,7 @@ section { padding: 7rem 3.5rem; position: relative; z-index: 1; border-top: 1px 
   margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-dim);
 }
 .sh-num { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; color: var(--dim); padding: 0.36rem 0.75rem; border: 1px solid var(--border); }
-.sh-title { font-size: 0.74rem; font-weight: 400; letter-spacing: 0.38em; text-transform: uppercase; color: var(--white); }
+.sh-title { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.38em; text-transform: uppercase; color: var(--white); font-family: 'IBM Plex Mono', monospace; }
 .sh-line { flex: 1; height: 1px; background: var(--border-dim); }
 
 /* ── TIER LABELS ── */
@@ -221,7 +220,7 @@ section { padding: 7rem 3.5rem; position: relative; z-index: 1; border-top: 1px 
   color: rgba(255,255,255,0.2); text-transform: uppercase;
 }
 .tier-title {
-  font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.28em;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.60rem; letter-spacing: 0.28em;
   text-transform: uppercase; color: var(--dim);
 }
 .tier-desc {
@@ -230,7 +229,7 @@ section { padding: 7rem 3.5rem; position: relative; z-index: 1; border-top: 1px 
 }
 
 /* ── GRID SYSTEM ── */
-.r-grid { display: grid; gap: 1px; background: var(--border); }
+.r-grid { display: grid; gap: 0; background: transparent; }
 .r-grid-3 { grid-template-columns: repeat(3, 1fr); }
 .r-grid-2 { grid-template-columns: repeat(2, 1fr); }
 .r-grid-1 { grid-template-columns: 1fr; }
@@ -239,19 +238,26 @@ section { padding: 7rem 3.5rem; position: relative; z-index: 1; border-top: 1px 
 /* ── CARDS ── */
 .rc {
   background: var(--black); padding: 2.2rem;
-  position: relative; overflow: hidden; transition: background 0.3s;
+  position: relative; overflow: hidden;
+  border: 1px solid transparent;
+  transition: border-color 0.4s ease;
 }
 .rc::before {
   content:''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: var(--white); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
 }
-.rc:hover { background: rgba(255,255,255,0.03); }
+.rc::after {
+  content:''; position: absolute; top: 0; left: 0; bottom: 0; width: 1px;
+  background: var(--white); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease 0.1s;
+}
+.rc:hover { border-color: var(--white); }
 .rc:hover::before { transform: scaleX(1); }
+.rc:hover::after { transform: scaleY(1); }
 .rc-ops { background: var(--black); }
 .rc-research { background: var(--black); }
 
 .rc-coord { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.2rem; }
-.rc h3 { font-size: 0.86rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; line-height: 1.4; margin-bottom: 1.4rem; color: var(--white); }
+.rc h3 { font-size: 0.86rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; line-height: 1.4; margin-bottom: 1.4rem; color: var(--white); font-family: 'IBM Plex Mono', monospace; }
 .rc-badge {
   display: inline-block; margin-bottom: 1.4rem;
   font-family: var(--mono); font-size: 0.50rem; letter-spacing: 0.16em; text-transform: uppercase;
@@ -262,15 +268,44 @@ section { padding: 7rem 3.5rem; position: relative; z-index: 1; border-top: 1px 
 .skill-group { margin-top: 0; }
 .skill-group + .skill-group { margin-top: 1.4rem; }
 .skill-group-label {
-  font-family: var(--mono); font-size: 0.50rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--dim); margin-bottom: 0.6rem;
+  font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--white); margin-bottom: 0.6rem;
+  font-weight: 700; cursor: pointer; user-select: none;
+  display: flex; align-items: center; flex-direction: row-reverse; justify-content: flex-end; gap: 0.7rem;
+  padding: 0.3rem 0;
+  transition: color 0.2s;
 }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 4px; width: fit-content; max-width: 100%; }
+.skill-group-label:hover { color: rgba(255,255,255,0.7); }
+.skill-group-label::after {
+  content: '🗡';
+  font-size: 0.9rem; font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.skill-group.open .skill-group-label::after {
+  content: '⚔';
+  color: rgba(255,255,255,0.6);
+}
+.skill-tags {
+  display: flex; flex-direction: column; gap: 0px; width: fit-content; max-width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.skill-group.open .skill-tags {
+  max-height: 600px;
+  opacity: 1;
+}
 .st {
-  font-family: var(--mono); font-size: 0.50rem; letter-spacing: 0.1em;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--dim);
-  background: var(--black); padding: 0.28rem 0.6rem; white-space: nowrap;
-  border: 1px solid var(--border);
+  white-space: nowrap; padding: 0.22rem 0;
+}
+.st::before {
+  content: '- ';
+  color: rgba(255,255,255,0.2);
 }
 
 /* ── RESEARCH CARD ── */
@@ -304,7 +339,7 @@ footer {
   display: flex; justify-content: space-between; align-items: center;
   position: relative; z-index: 1;
 }
-.footer-sig { font-size: 0.74rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.45); }
+.footer-sig { font-size: 0.62rem; font-weight: 300; color: rgba(255,255,255,0.45); letter-spacing: 0.16em; }
 .footer-copy { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
 
 /* ── REVEAL ── */
@@ -328,9 +363,9 @@ footer {
   .mark { display: none; }
 
   #hero { padding: 5.5rem 1.25rem 4rem; min-height: 100svh; }
-  .hero-eyebrow { font-size: clamp(0.68rem, 3.5vw, 0.78rem); letter-spacing: 0.14em; margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-size: clamp(0.58rem, 3vw, 0.68rem); letter-spacing: 0.14em; margin-bottom: 2.5rem; }
   .hero-rule { margin-bottom: 2.2rem; }
-  .hero-desc { font-size: 0.9rem; max-width: 100%; }
+  .hero-desc { font-size: clamp(0.68rem, 3vw, 0.76rem); max-width: 100%; }
   .hero-chips { margin-top: 2rem; }
   .chip { font-size: 0.54rem; }
   .chip-sep { font-size: 0.54rem; padding: 0 0.6rem; }
@@ -347,13 +382,16 @@ footer {
   .rc { padding: 1.6rem 1.25rem; grid-column: span 1 !important; }
   .rc h3 { font-size: 0.78rem; }
 
-  .rc-prose { font-size: 0.84rem; }
+  .rc-prose { font-size: 0.78rem; }
+
+  .skill-group-label { font-size: 0.58rem; }
+  .st { font-size: 0.56rem; }
 
   .contact-layout { gap: 2.5rem; }
   .cl { font-size: 0.64rem; padding: 1rem 1.25rem; }
 
   footer { flex-direction: column; gap: 0.8rem; padding: 1.5rem 1.25rem; text-align: center; }
-  .footer-sig { font-size: 0.68rem; }
+  .footer-sig { font-size: 0.62rem; }
 }
 
 /* ── 400px ── */
@@ -362,159 +400,6 @@ footer {
   .rc { padding: 1.4rem 1rem; }
 }
 
-/* ── CTF MOBILE ── */
-@media (max-width: 768px) {
-  /* make anomaly easier to tap */
-  .ti-anomaly { padding: 0 1.4rem; font-size: 0.62rem; }
-  .ticker-wrap { padding: 0.7rem 0; }
-  .ti { font-size: 0.54rem; padding: 0 1.1rem; }
-
-  /* modal fills screen on mobile */
-  #ctf-overlay { align-items: flex-end; }
-  #ctf-terminal {
-    width: 100%;
-    max-height: 92svh;
-    border-left: none; border-right: none; border-bottom: none;
-    border-radius: 0;
-    display: flex; flex-direction: column;
-  }
-
-  .ctf-titlebar { padding: 0.6rem 1rem; }
-  .ctf-titlebar-label { font-size: 0.46rem; letter-spacing: 0.14em; }
-
-  /* seals scroll horizontally */
-  .ctf-seals { overflow-x: auto; flex-wrap: nowrap; padding: 0.5rem 1rem; gap: 4px; scrollbar-width: none; }
-  .ctf-seals::-webkit-scrollbar { display: none; }
-  .ctf-seal { font-size: 0.40rem; padding: 0.28rem 0.5rem; white-space: nowrap; flex-shrink: 0; }
-
-  /* body scrolls, input stays pinned */
-  .ctf-body { flex: 1; overflow-y: auto; padding: 1rem 1rem 0.8rem; min-height: 140px; max-height: none; }
-  .ctf-line { font-size: 0.54rem; line-height: 1.9; }
-  .ctf-line.code { font-size: 0.58rem; }
-
-  /* input zones */
-  .ctf-zone { padding: 0.8rem 1rem; }
-  .ctf-zone-label { font-size: 0.44rem; }
-  .ctf-zone-row { gap: 0.4rem; }
-  .ctf-input { font-size: 0.54rem; padding: 0.5rem 0.6rem; }
-  .ctf-btn { font-size: 0.46rem; padding: 0.5rem 0.7rem; }
-  .ctf-error { font-size: 0.46rem; }
-}
-
-@media (max-width: 400px) {
-  .ctf-titlebar-label { font-size: 0.42rem; }
-  .ctf-line { font-size: 0.50rem; }
-  .ctf-seal { font-size: 0.38rem; }
-}
-
-
-/* ── TICKER ANOMALY ── */
-.ti-anomaly {
-  font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.22em;
-  text-transform: uppercase; padding: 0 2rem; flex-shrink: 0;
-  color: #FFC4E8;
-  cursor: pointer;
-  pointer-events: all;
-  position: relative;
-  animation: anomaly-pulse 1.6s ease-in-out infinite;
-}
-@keyframes anomaly-pulse {
-  0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(255,196,232,0.9), 0 0 20px rgba(255,196,232,0.5); }
-  50%       { opacity: 0.7; text-shadow: 0 0 4px rgba(255,196,232,0.4); }
-}
-.ti-anomaly:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-/* ── CTF MODAL OVERLAY ── */
-#ctf-overlay {
-  display: none; position: fixed; inset: 0; z-index: 9000;
-  background: rgba(0,0,0,0.88); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center;
-}
-#ctf-overlay.open { display: flex; }
-
-/* ── CTF TERMINAL ── */
-#ctf-terminal {
-  width: min(780px, 93vw);
-  background: #050005;
-  border: 1px solid rgba(255,196,232,0.4);
-  box-shadow: 0 0 80px rgba(255,196,232,0.1), 0 0 0 1px rgba(255,196,232,0.06), inset 0 0 60px rgba(255,196,232,0.02);
-  font-family: var(--mono);
-  animation: terminal-in 0.35s ease forwards;
-}
-@keyframes terminal-in {
-  from { opacity:0; transform: translateY(24px) scale(0.96); }
-  to   { opacity:1; transform: translateY(0) scale(1); }
-}
-.ctf-close {
-  background: none; border: 1px solid rgba(255,196,232,0.2); color: rgba(255,196,232,0.4);
-  font-family: var(--mono); font-size: 0.50rem; letter-spacing: 0.14em;
-  padding: 0.4rem 0.8rem; cursor: pointer; text-transform: uppercase; transition: all 0.2s;
-  min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;
-}
-.ctf-close:hover { color: #FFC4E8; border-color: rgba(255,196,232,0.7); }
-.ctf-titlebar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.7rem 1.4rem; border-bottom: 1px solid rgba(255,196,232,0.15);
-  background: rgba(255,196,232,0.03);
-}
-.ctf-titlebar-label { font-size: 0.51rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,196,232,0.55); }
-
-/* seal progress bar */
-.ctf-seals {
-  display: flex; gap: 1px; padding: 0.7rem 1.4rem;
-  border-bottom: 1px solid rgba(255,196,232,0.1);
-  background: rgba(255,196,232,0.015);
-}
-.ctf-seal {
-  flex: 1; font-size: 0.46rem; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 0.35rem 0.6rem; text-align: center;
-  border: 1px solid rgba(255,196,232,0.12); color: rgba(255,196,232,0.25);
-  transition: all 0.5s ease;
-}
-.ctf-seal.active { border-color: rgba(255,196,232,0.5); color: rgba(255,196,232,0.7); background: rgba(255,196,232,0.05); }
-.ctf-seal.done   { border-color: rgba(255,196,232,0.3); color: rgba(255,196,232,0.4); text-decoration: line-through; }
-
-.ctf-body {
-  padding: 1.4rem 1.8rem 1rem;
-  min-height: 240px; max-height: 52vh; overflow-y: auto;
-  scrollbar-width: thin; scrollbar-color: rgba(255,196,232,0.2) transparent;
-}
-.ctf-line {
-  font-size: 0.58rem; line-height: 2.1; color: rgba(255,255,255,0.45);
-  letter-spacing: 0.07em; display: block; white-space: pre-wrap;
-}
-.ctf-line.pink    { color: #FFC4E8; }
-.ctf-line.white   { color: rgba(255,255,255,0.9); }
-.ctf-line.dim     { color: rgba(255,255,255,0.22); }
-.ctf-line.code    { color: #fff; letter-spacing: 0.04em; font-size: 0.64rem; padding: 0.3rem 0; }
-.ctf-line.success { color: #FFC4E8; font-size: 0.60rem; letter-spacing: 0.1em; }
-.ctf-line.candy   { color: #FFC4E8; font-size: 0.50rem; letter-spacing: 0.2em; }
-.ctf-cursor-blink { display: inline-block; width: 6px; height: 0.65em; background: rgba(255,196,232,0.6); vertical-align: middle; animation: blink 0.8s step-start infinite; }
-
-/* ── INPUT ZONES ── */
-.ctf-zone {
-  display: none; border-top: 1px solid rgba(255,196,232,0.1);
-  padding: 1rem 1.4rem; background: rgba(255,196,232,0.015);
-  flex-direction: column; gap: 0.5rem;
-}
-.ctf-zone.visible { display: flex; }
-.ctf-zone-label { font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,196,232,0.4); }
-.ctf-zone-row { display: flex; gap: 0.6rem; align-items: center; }
-.ctf-input {
-  flex: 1; background: rgba(255,196,232,0.03); border: 1px solid rgba(255,196,232,0.18);
-  outline: none; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em;
-  color: #fff; caret-color: #FFC4E8; padding: 0.5rem 0.8rem;
-}
-.ctf-input::placeholder { color: rgba(255,255,255,0.15); }
-.ctf-btn {
-  background: none; border: 1px solid rgba(255,196,232,0.28);
-  font-family: var(--mono); font-size: 0.50rem; letter-spacing: 0.14em;
-  text-transform: uppercase; color: rgba(255,196,232,0.55);
-  padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s; white-space: nowrap;
-}
-.ctf-btn:hover { border-color: #FFC4E8; color: #FFC4E8; background: rgba(255,196,232,0.04); }
-.ctf-error { font-size: 0.50rem; color: rgba(255,120,120,0.8); font-family: var(--mono); letter-spacing: 0.1em; display: none; }
-.ctf-error.visible { display: block; }
 </style>
 </head>
 <body>
@@ -551,9 +436,11 @@ footer {
   <div class="hero-rule"></div>
 
   <p class="hero-desc">
-    Anushka works on web-applications, networks and cyber-physical resilience across OT, with focus on human-machine interface security, resilience in critical environments, and human-in-the-loop integrity in AI-deployed systems.
+    Anushka is a security researcher and research engineer working across networks, OT, and cyber-physical systems: embedded systems, robotics, and RF environments, with a practice grounded in secure-by-design and zero-trust principles.
     <br><br>
-    Her research trajectory spans offensive security and bio-inspired autonomous systems, focused on edge compute, embodied AI, and stigmergy, validated through digital twin simulation, penetration testing, and first-principles threat modelling.
+    Her research trajectory spans offensive security and bio-inspired autonomous systems: edge compute, embodied AI, and swarm intelligence rooted in stochastic coordination, digital olfaction, and biological first principles.
+    <br><br>
+    Her methodology is grounded in zero-trust and secure-by-design architecture, applied through digital twin simulation, adversarial threat modelling, and penetration testing.
   </p>
 </section>
 
@@ -564,7 +451,7 @@ footer {
     <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
     <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
     <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
-    <span class="ti-anomaly" id="ctfTrigger">✦ a tea party invitation has arrived — click to open ✦</span>
+    <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
     <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
     <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
     <span class="ti">Prepare. Adapt. Regenerate.<span class="sep">//</span></span>
@@ -573,49 +460,6 @@ footer {
   </div>
 </div>
 
-<!-- CTF MODAL -->
-<div id="ctf-overlay" role="dialog" aria-modal="true" aria-label="Candy Grid Terminal">
-  <div id="ctf-terminal">
-    <div class="ctf-titlebar">
-      <span class="ctf-titlebar-label">✦ the enchanted tea party — doveblade.garden ✦</span>
-      <button class="ctf-close" id="ctfClose">[ ESC ]</button>
-    </div>
-    <div class="ctf-seals">
-      <div class="ctf-seal" id="seal0">✦ INVITATION</div>
-      <div class="ctf-seal" id="seal1">RIDDLE 01 // THE TEAPOT</div>
-      <div class="ctf-seal" id="seal2">RIDDLE 02 // THE LOOKING GLASS</div>
-      <div class="ctf-seal" id="seal3">✦ THE TABLE IS SET</div>
-    </div>
-    <div class="ctf-body" id="ctfBody"></div>
-    <!-- ZONE A: scavenger paste input -->
-    <div class="ctf-zone" id="zoneA">
-      <div class="ctf-zone-label">✦ pour the decoded message into the teacup</div>
-      <div class="ctf-zone-row">
-        <input class="ctf-input" id="inputA" type="text" autocomplete="off" spellcheck="false" placeholder="paste here..." />
-        <button class="ctf-btn" id="btnA">[ SUBMIT ]</button>
-      </div>
-      <div class="ctf-error" id="errA">✦ the teapot is displeased. that's not quite right.</div>
-    </div>
-    <!-- ZONE B: ROT13 decode input -->
-    <div class="ctf-zone" id="zoneB">
-      <div class="ctf-zone-label">✦ what do you see through the looking glass?</div>
-      <div class="ctf-zone-row">
-        <input class="ctf-input" id="inputB" type="text" autocomplete="off" spellcheck="false" placeholder="decoded answer..." />
-        <button class="ctf-btn" id="btnB">[ SUBMIT ]</button>
-      </div>
-      <div class="ctf-error" id="errB">✦ the looking glass shows something different. try again.</div>
-    </div>
-    <!-- ZONE C: final flag input -->
-    <div class="ctf-zone" id="zoneC">
-      <div class="ctf-zone-label">✦ set the table — enter the final password to be seated</div>
-      <div class="ctf-zone-row">
-        <input class="ctf-input" id="inputC" type="text" autocomplete="off" spellcheck="false" placeholder="flag{...}" />
-        <button class="ctf-btn" id="btnC">[ SUBMIT ]</button>
-      </div>
-      <div class="ctf-error" id="errC">✦ the host turns you away. check the format and try again.</div>
-    </div>
-  </div>
-</div>
 
 <section id="focus">
   <div class="sh"><span class="sh-num">01</span><span class="sh-title">Focus</span><div class="sh-line"></div></div>
@@ -816,7 +660,6 @@ footer {
   <div class="contact-layout">
     <div class="c-links reveal">
       <a class="cl" href="https://linkedin.com/in/anushkadevaprakash" target="_blank" rel="noopener noreferrer">LinkedIn <span class="cl-arr">↗</span></a>
-      <a class="cl" href="https://x.com/dovebladed" target="_blank" rel="noopener noreferrer">X <span class="cl-arr">↗</span></a>
       <a class="cl" href="https://github.com/Doveblade" target="_blank" rel="noopener noreferrer">GitHub <span class="cl-arr">↗</span></a>
       <a class="cl" href="https://anushkadevaprakash.substack.com" target="_blank" rel="noopener noreferrer">Substack <span class="cl-arr">↗</span></a>
     </div>
@@ -824,12 +667,47 @@ footer {
 </section>
 
 <footer>
-  <span class="footer-sig">Ghost in the machine, between the cold, the stardust and the steel.</span>
+  <span class="footer-sig"><span id="footer-text"></span><span id="footer-cursor" style="font-family:var(--mono);color:rgba(255,255,255,0.45);animation:blink 0.9s step-start infinite;"> _</span></span>
   <span class="footer-copy">&copy; 2026 Anushka Devaprakash. All rights reserved.</span>
 </footer>
 
 <script>
-  // ── REVEAL ON SCROLL ──
+  // ── FOOTER TYPEWRITER ──
+  (function() {
+    const el = document.getElementById('footer-text');
+    const cur = document.getElementById('footer-cursor');
+    const text = 'Grace is welded into the steel of the dove who wields the blade.';
+    let started = false;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !started) {
+          started = true;
+          let i = 0;
+          const iv = setInterval(() => {
+            el.textContent += text[i];
+            i++;
+            if (i >= text.length) {
+              clearInterval(iv);
+              cur.style.display = 'none';
+            }
+          }, 32);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(document.querySelector('footer'));
+  })();
+
+
+  document.querySelectorAll('.skill-group-label').forEach(label => {
+    label.addEventListener('click', () => {
+      const group = label.closest('.skill-group');
+      const isOpen = group.classList.contains('open');
+      group.classList.toggle('open', !isOpen);
+    });
+  });
+
+
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
   }, { threshold: 0.01, rootMargin: '0px 0px -20px 0px' });
@@ -864,6 +742,7 @@ footer {
         i++;
         if (i >= text.length) {
           clearInterval(iv);
+          cur.style.display = 'none';
         }
       }, 28);
     }, 600);
@@ -927,167 +806,6 @@ footer {
     });
     // Now the div is exactly 2x wide — translateX(-50%) loops perfectly
     inner.classList.add('running');
-  })();
-
-  // ── CTF TERMINAL ──
-  (function() {
-    const overlay = document.getElementById('ctf-overlay');
-    const body    = document.getElementById('ctfBody');
-    const trigger = document.getElementById('ctfTrigger');
-    const closeBtn= document.getElementById('ctfClose');
-    const seals   = [0,1,2,3].map(i => document.getElementById('seal'+i));
-
-    const zones  = { A: document.getElementById('zoneA'), B: document.getElementById('zoneB'), C: document.getElementById('zoneC') };
-    const inputs = { A: document.getElementById('inputA'), B: document.getElementById('inputB'), C: document.getElementById('inputC') };
-    const btns   = { A: document.getElementById('btnA'),   B: document.getElementById('btnB'),   C: document.getElementById('btnC') };
-    const errs   = { A: document.getElementById('errA'),   B: document.getElementById('errB'),   C: document.getElementById('errC') };
-
-    // SHA-256 hashes only — no plaintext answers in source
-    const H1 = 'b1faad8b08272046cddd97834682636e3805f7f5ab9a1858ddfa313d080b7a90';
-    const H2 = '78334d73a776107ac616e65589e01b79a51d1fd5dd4c435d0581bf4e5718d47c';
-    const HF = 'dd95de5d2d2ff148b2a83f7d2ea9e92387fa562d15bf85b7a9d3e2faa722c913';
-
-    async function sha256(str) {
-      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-    }
-
-    let timers = [];
-    function q(fn, ms) { const t = setTimeout(fn, ms); timers.push(t); }
-    function clearTimers() { timers.forEach(clearTimeout); timers = []; }
-
-    function line(cls, text) {
-      const s = document.createElement('span');
-      s.className = 'ctf-line' + (cls ? ' '+cls : '');
-      s.textContent = text;
-      body.appendChild(s);
-      body.scrollTop = body.scrollHeight;
-    }
-
-    function showZone(key) {
-      Object.values(zones).forEach(z => z.classList.remove('visible'));
-      if (key) { zones[key].classList.add('visible'); inputs[key].value = ''; inputs[key].focus(); }
-    }
-
-    function setSeal(index) {
-      seals.forEach((s, i) => {
-        s.classList.remove('active','done');
-        if (i < index) s.classList.add('done');
-        else if (i === index) s.classList.add('active');
-      });
-    }
-
-    function showErr(key) {
-      errs[key].classList.add('visible');
-      setTimeout(() => errs[key].classList.remove('visible'), 2500);
-    }
-
-    function runIntro() {
-      body.innerHTML = '';
-      showZone(null);
-      setSeal(0);
-      clearTimers();
-
-      const intro = [
-        [0,    'candy', '✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦'],
-        [300,  'pink',  '>> you have been invited to the enchanted tea party'],
-        [700,  'candy', '✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦'],
-        [1100, '',      '> HOST          : the doveblade herself'],
-        [1300, '',      '> OCCASION      : rather peculiar, rather wonderful'],
-        [1500, '',      '> RIDDLES AHEAD : 02'],
-        [1700, '',      '> MISSION       : solve them both. earn your seat at the table.'],
-        [2000, 'dim',   '──────────────────────────────────────────────────'],
-        [2400, 'pink',  '>> RIDDLE 01 // THE TEAPOT'],
-        [2800, '',      '> the teapot has steeped a secret message overnight.'],
-        [3100, '',      '> it has been sealed in base64 to keep it warm.'],
-        [3400, 'code',  '  YzB3ZzFybA=='],
-        [3700, '',      '> decode it and pour the answer below.'],
-        [4000, 'dim',   '──────────────────────────────────────────────────'],
-      ];
-
-      intro.forEach(([delay, cls, text]) => q(() => line(cls, text), delay));
-      q(() => { setSeal(1); showZone('A'); }, 4300);
-    }
-
-    function runSeal2() {
-      showZone(null);
-      setSeal(1);
-      const msgs = [
-        [0,   'dim',   '──────────────────────────────────────────────────'],
-        [200, 'pink',  '✦ RIDDLE 01 — SOLVED ✦'],
-        [700, 'dim',   '──────────────────────────────────────────────────'],
-        [1100,'pink',  '>> RIDDLE 02 // THE LOOKING GLASS'],
-        [1500,'',      '> the white rabbit left a message on the looking glass.'],
-        [1700,'',      '> but it came out reflected — written in ROT13:'],
-        [2000,'code',  '  t0gpuh'],
-        [2400,'',      '> hold it up to the light. what does it really say?'],
-        [2700,'dim',   '──────────────────────────────────────────────────'],
-      ];
-      msgs.forEach(([delay, cls, text]) => q(() => line(cls, text), delay));
-      q(() => { setSeal(2); showZone('B'); }, 3000);
-    }
-
-    function runVault() {
-      showZone(null);
-      setSeal(2);
-      const msgs = [
-        [0,   'dim',   '──────────────────────────────────────────────────'],
-        [200, 'pink',  '✦ RIDDLE 02 — SOLVED ✦'],
-        [700, 'dim',   '──────────────────────────────────────────────────'],
-        [1100,'pink',  '>> THE TABLE IS SET'],
-        [1500,'',      '> both riddles answered. the host is impressed.'],
-        [1800,'',      '> two words were whispered across the table:'],
-        [2000,'white', '  word 01 → from the teapot'],
-        [2200,'white', '  word 02 → from the looking glass'],
-        [2500,'',      '> join them with an underscore, wrap in flag{}.'],
-        [2800,'',      '> speak the password and take your seat. ✦'],
-        [3100,'dim',   '──────────────────────────────────────────────────'],
-      ];
-      msgs.forEach(([delay, cls, text]) => q(() => line(cls, text), delay));
-      q(() => { setSeal(3); showZone('C'); }, 2600);
-    }
-
-    btns.A.addEventListener('click', async () => {
-      const h = await sha256(inputs.A.value.trim().toLowerCase());
-      if (h === H1) { runSeal2(); }
-      else { showErr('A'); inputs.A.focus(); }
-    });
-
-    btns.B.addEventListener('click', async () => {
-      const h = await sha256(inputs.B.value.trim().toLowerCase());
-      if (h === H2) { runVault(); }
-      else { showErr('B'); inputs.B.focus(); }
-    });
-
-    btns.C.addEventListener('click', async () => {
-      const h = await sha256(inputs.C.value.trim().toLowerCase());
-      if (h === HF) {
-        showZone(null);
-        line('', '');
-        line('candy', '✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦');
-        line('pink',  '>> welcome to the tea party ✦');
-        line('candy', '✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦');
-        line('',      '> your seat has been reserved.');
-        line('',      '> the host has prepared a very special surprise...');
-        const cur = document.createElement('span');
-        cur.className = 'ctf-cursor-blink';
-        body.appendChild(cur);
-        body.scrollTop = body.scrollHeight;
-        setTimeout(() => { window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'; }, 2000);
-      } else { showErr('C'); inputs.C.focus(); }
-    });
-
-    ['A','B','C'].forEach(k => {
-      inputs[k].addEventListener('keydown', e => { if (e.key === 'Enter') btns[k].click(); });
-    });
-
-    function openModal()  { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; runIntro(); }
-    function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; clearTimers(); showZone(null); }
-
-    trigger.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   })();
 
 </script>
